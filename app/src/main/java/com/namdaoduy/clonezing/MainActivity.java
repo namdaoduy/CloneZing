@@ -1,12 +1,11 @@
 package com.namdaoduy.clonezing;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+
+import java.lang.ref.WeakReference;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,10 +18,17 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static WeakReference<MainActivity> weakActivity;
+
+    public static MainActivity getInstanceActivity() {
+        return weakActivity.get();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        weakActivity = new WeakReference<>(MainActivity.this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

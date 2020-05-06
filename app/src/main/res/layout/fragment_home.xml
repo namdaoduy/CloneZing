@@ -7,7 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textArtist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:text="@string/erik"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textArtist"
         app:srcCompat="@drawable/chamday_cut" />
 
     <SeekBar
@@ -46,15 +46,15 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_marginBottom="30dp"
-        android:progress="80"
+        android:progress="0"
         android:progressTint="#434343"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/playButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="30dp"
@@ -65,43 +65,43 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/nextButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="30dp"
         android:src="@android:drawable/ic_media_next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3" />
+        app:layout_constraintStart_toEndOf="@+id/playButton" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/prevButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:src="@android:drawable/ic_media_previous"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3" />
+        app:layout_constraintEnd_toStartOf="@+id/playButton" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textTimeCurrent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="30dp"
         android:text="00:00"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintEnd_toStartOf="@+id/seekBar" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textTimeTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="30dp"
         android:text="00:00"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintStart_toEndOf="@+id/seekBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
