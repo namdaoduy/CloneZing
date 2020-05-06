@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class HomeFragment extends Fragment {
     private View view;
     private ImageView playButton, nextButton, prevButton;
     private TextView textTitle, textArtist;
+    private SeekBar seekBar;
     private MediaPlayer mediaPlayer;
     private ArrayList<Song> songs;
     private int position = 0;
@@ -44,6 +46,7 @@ public class HomeFragment extends Fragment {
         prevButton = view.findViewById(R.id.prevButton);
         textTitle = view.findViewById(R.id.textTitle);
         textArtist = view.findViewById(R.id.textArtist);
+        seekBar = view.findViewById(R.id.seekBar);
     }
 
     private void setListeners() {
@@ -59,9 +62,7 @@ public class HomeFragment extends Fragment {
                     mediaPlayer.pause();
                     playButton.setImageResource(android.R.drawable.ic_media_play);
                 } else {
-                    int length = mediaPlayer.getCurrentPosition();
-                    mediaPlayer.seekTo(length);
-                    startSong();
+                    resumeSong();
                 }
             }
         });
@@ -109,13 +110,23 @@ public class HomeFragment extends Fragment {
         playButton.setImageResource(android.R.drawable.ic_media_pause);
         textTitle.setText(songs.get(position).getTitle());
         textArtist.setText(songs.get(position).getArtist());
+        seekBar.setMax(mediaPlayer.getDuration());
+        seekBar.setProgress(0);
+    }
+
+    private void resumeSong() {
+        int length = mediaPlayer.getCurrentPosition();
+        mediaPlayer.seekTo(length);
+        mediaPlayer.start();
+        playButton.setImageResource(android.R.drawable.ic_media_pause);
+        textTitle.setText(songs.get(position).getTitle());
+        textArtist.setText(songs.get(position).getArtist());
+        seekBar.setMax(mediaPlayer.getDuration());
+        seekBar.setProgress(length);
     }
 
     private void createMedia() {
         MainActivity context = MainActivity.getInstanceActivity();
-        Log.d("ZingLog", context.toString());
         mediaPlayer = MediaPlayer.create(context, songs.get(position).getFile());
-        mediaPlayer.start();
-        Log.d("ZingLog", "" + mediaPlayer.isPlaying());
     }
 }
